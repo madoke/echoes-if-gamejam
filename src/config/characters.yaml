@@ -30,7 +30,7 @@ characters:
       idle: patrick.png
     style:
       color: green
-    name: Patrick
+    name: Schwartz
   sinclair:
     sprites:
       idle: sinclair.png

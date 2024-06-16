@@ -8,8 +8,6 @@ main:
   set data.reported_to_captain_diaz false
   set data.discover_horizon_plans false
   
-  set data.reported_protowing_captain_diaz false
-  set data.reported_horizon_captian_diaz false
   set_screen default 0
   change_scene "chapter-title" next_label "setup" title "Part 1" subtitle "Case"
 
@@ -17,11 +15,10 @@ setup:
   set_screen diaz_office 0
   talk diaz idle "Detective, have a seat."
   talk diaz idle "I'm assigning you to the Sinclair case."
-  talk player idle "What happened with Thompson?"
-  talk diaz idle "I had to pull him out after discovering he was dating the victim."
-  talk diaz idle "He's not mentally well right now. You should avoid him. Understood?"
-  talk player idle "I'll do my best."
-  talk diaz idle "Remember, follow protocol. We don't need more trouble."
+  talk player idle "What about Thompson?"
+  talk diaz idle "I pulled him out, he was secretly dating the victim."
+  talk diaz idle "He's not mentally well. You should avoid him. Understood?"
+  talk player idle "Got it."
   wait 1000
   jump case_choices
 
@@ -30,7 +27,7 @@ case_choices:
     "What's' next ?"
     "Review Case" if (== $data.visited_case_files false):
       jump case_files
-    "Talk with Thompson" if (== $data.visited_thompson false):
+    "Visit Thompson" if (== $data.visited_thompson false):
       jump jack_thompson
     "Check Laboratory" if (== $data.visited_case_files true):
       jump investigation
@@ -39,29 +36,29 @@ case_files:
   set data.visited_case_files true
   set_screen case_files
   "Police Report"
-  "March 22nd 2030 I was sent out to Veronica Sinclair's apartment, after the parents reported her missing. There were no signs of break in, and none of Miss Sinclair's belongings were missing. Later that evening, Captain Diaz took over and flagged the case as high priority"
-  "Detective Thompson's Report"
-  "Things didn't add up in Veromica's lab. Going through her journal revealed she was close to a breakthrough in thermodynamics computing. But then all experiments were left unfinished. An email exchange with Horizon's legal department revealed *** REDACTED *** aligned with the company's goals."
+  "March 22nd 2030 I went to Veronica Sinclair's apartment, after the parents reported her missing. No signs of break in, and none of Miss Sinclair's belongings missing. Later that evening, Captain Diaz took over the case."
+  "Thompson's Report"
+  "Things didn't add up in Veromica's lab. Her journal revealed she was close to a breakthrough in thermodynamics computing, but then all experiments were left unfinished. A suspicious email from upper management *** REDACTED *** aligned with company goals."
   wait 1000
   jump case_choices
 
 jack_thompson:
   set data.visited_jack_thompson true
   set_screen jack_thompson
-  talk thompson idle "Look, this case is about everything but a missing person. There are forces at play here that go beyond what you can imagine."
-  talk player idle "What about your involvement with Dr. Sinclair?"
-  talk thompson idle "Bullshit! They don't want the truth coming out. Her research is just.. too valuable for them to share."
+  talk thompson idle "This case is about everything but kidnapping. There are other forces at play here."
+  talk player idle "What about your involvement with Veronica?"
+  talk thompson idle "Bullshit! They don't want the truth. Her research is just.. too valuable for them."
   talk player idle "Why isn't this in the report?"
-  talk thompson idle "Wake up kid! Diaz is compromised! If you want to succeed, keep your cards close to your chest. I can help you but we need to keep it between us."
+  talk thompson idle "Wake up kid! Diaz is compromised! You can't trust them! You're gonna need my help to figure it out."
   wait 1000
   choice: 
-    "Accept Thompson's help ?"
-    "I could use some help."
+    "Accept?"
+    "Alright."
       set data.requested_thompson_help true
-      talk thompson idle "Good. Meet you at the lab. I need to peek into the prototype wing."
+      talk thompson idle "Good. I'll start with the prototype wing."
     "I'm good. Thanks."
       set data.requested_thompson_help false
-      talk thompson idle "Tread carefully. The deeper you dig, the more dangerous it gets."
+      talk thompson idle "Tread carefully. They're dangerous."
   wait 1000
   jump case_choices
 
