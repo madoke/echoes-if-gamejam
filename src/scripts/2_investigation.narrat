@@ -37,11 +37,12 @@ sinclair_lab_choices:
     "Go to prototype wing" if (== $data.check_sinclair_computer true):
       talk player idle "Shall we take a look at the prototype wing?"
       talk patrick idle "Of course! After you."
-      change_scene "chapter-title" next_label "prototype_wing" title "Part 3" subtitle "Revelations"
+      jump revelations
 
 data_center:
+  set data.discover_horizon_plans true
   think player idle "Alright Jones, think... Where can I find email backups?"
-  "... types ls /data/backups/email ..."
+  "Types ls /data/backups/email"
   think player idle "That was easy."
   "Inbox"
   "From: HorizonPrototypes <proto@horizon.com>"
@@ -51,31 +52,34 @@ data_center:
   "From: HorizonMilitary <military@horizon.com>"
   "We regret to inform that we're off this year's research budget. All Thermodynamics computing investigation will be halted until further notice."
   "Your laboratory access was revoked. A member of Horizon Military will contact you for the context handover"
-  think player idle "Shit, they took her down! They must be building some kind of wicked weapon using her research!"
+  think player idle "Military? They're building weapons with her research! I need to stop them."
   wait 1000
+  jump data_center_choices
+
+data_center_choices:
   choice:
-    "What's next ?"
-    "Call reinforcements, arrest Horizon's execs":
+    "What next ?"
+    "Call reinforcements and lock down Horizon Military":
+      "Picks up phone to call police station"
+      talk player idle "Illegal activities spotted at Horizon Military. We're locking down the facility."
+      talk player idle "All units to Horizon Military. This is not a drill. Repeat, this is not a drill."
       jump end_horizon_shut_down
-    "Call Diaz" if (== $data.reported_horizon_captian_diaz false):
-      set data.reported_horizon_captian_diaz true
-      talk diaz idle "Drop it kid !"
-      jump data_center
+    "Call Diaz" if (== $data.reported_to_captain_diaz false):
+      set data.reported_to_captain_diaz true
+      talk player idle "Captain, this is more serious than we thought, Horizon is making weapons with Sinclair's research."
+      talk diaz idle "Your job is to find Dr. Sinclair, stop chasing those theories! Have you been talking to Jack?"
+      jump data_center_choices
     "Go to the prototype wing":
-      jump prototype_wing
+      jump revelations
 
 end_horizon_shut_down:
-  set_screen diaz_office 0
-  talk diaz idle "What were you thinking?! Did I not tell you specifically to stop chasing that twisted theory? You had one job and it was to find Dr. Sinclair, not to create this hell of a shit show."
+  set_screen diaz_office
+  talk diaz idle "What were you thinking?! I told you specifically to stop!"
   talk player idle "Sir, the evidence is compelling. We can't ignore this."
-  talk diaz idle "You have it all figured out don't you? At least Jack understood it. They're too powerful kid, can't you see that Horizon is pulling all the strings here? I can't risk the entire department because of a hunch. You're off the case."
-  talk player idle "People need to know the truth."
-  talk player idle "I'll keep digging. Badge or no badge."
-  talk diaz idle "Be careful. You're playing a dangerous game."
+  talk diaz idle "You have it all figured out don't you? At least Jack understood it. They're too powerful detective, can't you see that I'm trying to protect you here? I can't risk the entire department because of a hunch. You're off the case."
   wait 1000
   "Press Release"
-  "In the light of recent events, Horizon denies all false alegations that a secret weapons program was running behind the scenes of the top of Dr. Sinclair's work."
-  "Horizon is a research company and our mission is to push humanity forward by making scientific advance"
-  "We remain commited to find Dr. Sinclair and that is our number one priority right now"
+  "Horizon denies all false alegations that a secret weapons program was running behind the scenes of the top of Dr. Sinclair's work. This is a research company focused in making science"
+  "We remain committed to support the police in finding and getting Dr. Sinclair to safety."
   wait 1000
   jump end

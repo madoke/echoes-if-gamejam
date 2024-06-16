@@ -5,6 +5,8 @@ main:
 
   set data.read_sinclair_journal false
   set data.check_sinclair_computer false
+  set data.reported_to_captain_diaz false
+  set data.discover_horizon_plans false
   
   set data.reported_protowing_captain_diaz false
   set data.reported_horizon_captian_diaz false

@@ -1,26 +1,22 @@
 revelations:
   change_scene "chapter-title" next_label "prototype_wing" title "Part 3" subtitle "Revelations"
 
-
-prototype_wing_tile:
-  change_scene "chapter-title" next_label "prototype_wing" title "Part 3" subtitle "Revelations"
-
 prototype_wing:
   set_screen prototype_wing
-  talk sinclair idle "Help! Over here!"
-  talk player idle "Hold on, I'm getting you out."
-  talk patrick idle "One more step, and I shoot."
-  talk player idle "Patrick?"
+  talk player idle "Dr Sinclair! I'm getting you out."
+  talk patrick idle "Not so fast."
+  talk player idle "Mr. Schwartz?"
   talk patrick idle "Horizon offered me a way out."
-  talk player idle "They'll never let you go. We can expose them!"
-  talk patrick idle "I just wanted a new start..."
-  talk player idle "You can still have it. Put the gun down."
+  
+  talk player idle "They'll never let you go. We can expose them together!"
   wait 1000
+  if (== $data.reported_to_captain_diaz true):
+    jump end_police_arrests_patrick
   if (== $data.requested_thomson_help true):
     jump end_thomson_charged_murder
-  if (== $data.reported_protowing_captain_diaz true):
-    jump end_police_arrests_patrick
-  jump end_talk_patrick_out
+  if (== $data.discover_horizon_plans true):
+    jump end_talk_patrick_out
+  jump end_detective disapears
 
 
 end_talk_patrick_out:
