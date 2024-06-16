@@ -1,0 +1,86 @@
+revelations:
+  change_scene "chapter-title" next_label "prototype_wing" title "Part 3" subtitle "Revelations"
+
+
+prototype_wing_tile:
+  change_scene "chapter-title" next_label "prototype_wing" title "Part 3" subtitle "Revelations"
+
+prototype_wing:
+  set_screen prototype_wing
+  talk sinclair idle "Help! Over here!"
+  talk player idle "Hold on, I'm getting you out."
+  talk patrick idle "One more step, and I shoot."
+  talk player idle "Patrick?"
+  talk patrick idle "Horizon offered me a way out."
+  talk player idle "They'll never let you go. We can expose them!"
+  talk patrick idle "I just wanted a new start..."
+  talk player idle "You can still have it. Put the gun down."
+  wait 1000
+  if (== $data.requested_thomson_help true):
+    jump end_thomson_charged_murder
+  if (== $data.reported_protowing_captain_diaz true):
+    jump end_police_arrests_patrick
+  jump end_talk_patrick_out
+
+
+end_talk_patrick_out:
+  set_screen prototype_wing
+  "Patrick drops the gun."
+  talk sinclair idle "They're building weapons, lots of them! All evidence is encrypted in my computer."
+  talk player idle "Alright back to the lab! The world needs to know."
+  talk patrick idle "Dr. Sinlcair it's not safe for you anymore. You need to disappear."
+  talk sinclair idle "I hope you can make it."
+  wait 1000
+  jump end_talk_patrick_out_news
+
+end_talk_patrick_out_news:
+  set_screen arcadia_times
+  "Scandal at Horizon top executives arrested!"
+  "Last tuesday, classified documents from Horizon Corp were leaked. Evidence reveals the company's involvement in weapons manufacturing, using latest advances in thermodynamics computing."
+  wait 1000
+  jump end
+
+end_police_arrests_patrick:
+  set_screen prototype_wing
+  talk diaz idle "Patrick Schwartz! Don't move!"
+  "Patrick raises both hands in the air."
+  talk player idle "But Captain, he's under Horizon's orders, we need to expose them!"
+  talk diaz idle "I'll take it from here kid."
+  wait 1000
+  jump end_police_arrests_patrick_press
+
+end_police_arrests_patrick_press:
+  set_screen horizon_corp
+  "Horizon Press"
+  "Dr. Sinclair was found alive, and is already with her family. The police intercepted Patrick Schwartz, kidnapped Dr. Sinclair to steal here research. Horizon committed to support Dr. Sinclair in the recovery from the trauma."
+
+  wait 1000
+  jump end
+
+end_thomson_charged_murder:
+  set_screen prototype_wing
+  talk thomson idle "Patrick! you son of ..."
+  "Thomson pulls out his gun, but Patrick shoots first."
+  "The two men still standing, looking at each other, when Detective Jones' body hits the floor."
+  talk thomson idle "You're gonna pay for this!"
+  "Sounds of footsteps approaching"
+  talk patrick idle "This is between you and the police now."
+  "While running away, Patrick shoots again, this time for Dr. Sinclair."
+  talk diaz idle "Thomson! Don't move!"
+  talk thomson idle "I can explain!"
+  talk diaz idle "You have the right to remain silent ..."
+  wait 1000
+  jump end_thomson_charged_murder_press
+
+end_thomson_charged_murder_press:
+  set_screen horizon_corp
+  "Horizon Press"
+  "Former detective Jack Thomson was arrested last tuesday, charged with the murders of Dr. Sinclair and Detective Jones. The police reports that Thomson is suffering from a mental condition that ultimately led him to the tragical events. Horizon committed support the victims' families."
+  wait 1000
+  jump end  
+
+end:
+  change_scene "chapter-title" next_label "end_title" title "The end"
+
+end_title:
+  change_scene "start-menu"

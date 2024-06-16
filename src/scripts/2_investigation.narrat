@@ -1,0 +1,81 @@
+investigation:
+  change_scene "chapter-title" next_label "sinclair_lab" title "Part 2" subtitle "Investigation"
+
+sinclair_lab:
+  talk patrick idle "Good evening detective! I'm Horizon's head of security, assigned to assist in your investigation."  
+  talk player idle "Thanks, can I search Dr. Sinclair's laboratory?"
+  talk patrick idle "As you can see, everything is as she left it."
+  think player idle "This looks excessively tidy, looks like someone's trying to cover their tracks..."
+  wait 1000
+  jump sinclair_lab_choices
+
+sinclair_lab_choices:
+  choice:
+    "What next?"
+    "Read journal" if (== $data.read_sinclair_journal false):
+      set data.read_sinclair_journal true
+      "March 21st 2030"
+      "Jack seems more delusional every day since we broke up. Yesterday he followed me home, and I'm worried that he might do something crazy."
+      think player idle "Humm.. That's not what I read in the official report."
+      wait 1000
+      jump sinclair_lab_choices
+    "Check computer" if (== $data.check_sinclair_computer false):
+      set data.check_sinclair_computer true
+      "Inbox"
+      "From: HorizonPrototypes <proto@horizon.com>"
+      "The latest thermodynamic chip test results are in. Unfortunately there were no signs of computation."
+      "Full report available at the prototype wing."
+      think player idle "It looks like several emails were deleted. I wonder if they keep a copy in the data center?"
+      wait 1000
+      jump sinclair_lab_choices
+    "Sneak into the data center" if (== $data.check_sinclair_computer true):
+      talk player idle "Excuse me Mr. Schwartz, where are the restrooms?"
+      talk patrick idle "Down the corridor, first door on the right!"
+      talk player idle "I'll be right back."
+      wait 1000
+      jump data_center
+    "Go to prototype wing" if (== $data.check_sinclair_computer true):
+      talk player idle "Shall we take a look at the prototype wing?"
+      talk patrick idle "Of course! After you."
+      change_scene "chapter-title" next_label "prototype_wing" title "Part 3" subtitle "Revelations"
+
+data_center:
+  think player idle "Alright Jones, think... Where can I find email backups?"
+  "... types ls /data/backups/email ..."
+  think player idle "That was easy."
+  "Inbox"
+  "From: HorizonPrototypes <proto@horizon.com>"
+  "The latest thermodynamic chip test results are in. The new chips are AGI capable."
+  "Full report available at the prototype wing."
+  "---"
+  "From: HorizonMilitary <military@horizon.com>"
+  "We regret to inform that we're off this year's research budget. All Thermodynamics computing investigation will be halted until further notice."
+  "Your laboratory access was revoked. A member of Horizon Military will contact you for the context handover"
+  think player idle "Shit, they took her down! They must be building some kind of wicked weapon using her research!"
+  wait 1000
+  choice:
+    "What's next ?"
+    "Call reinforcements, arrest Horizon's execs":
+      jump end_horizon_shut_down
+    "Call Diaz" if (== $data.reported_horizon_captian_diaz false):
+      set data.reported_horizon_captian_diaz true
+      talk diaz idle "Drop it kid !"
+      jump data_center
+    "Go to the prototype wing":
+      jump prototype_wing
+
+end_horizon_shut_down:
+  set_screen diaz_office 0
+  talk diaz idle "What were you thinking?! Did I not tell you specifically to stop chasing that twisted theory? You had one job and it was to find Dr. Sinclair, not to create this hell of a shit show."
+  talk player idle "Sir, the evidence is compelling. We can't ignore this."
+  talk diaz idle "You have it all figured out don't you? At least Jack understood it. They're too powerful kid, can't you see that Horizon is pulling all the strings here? I can't risk the entire department because of a hunch. You're off the case."
+  talk player idle "People need to know the truth."
+  talk player idle "I'll keep digging. Badge or no badge."
+  talk diaz idle "Be careful. You're playing a dangerous game."
+  wait 1000
+  "Press Release"
+  "In the light of recent events, Horizon denies all false alegations that a secret weapons program was running behind the scenes of the top of Dr. Sinclair's work."
+  "Horizon is a research company and our mission is to push humanity forward by making scientific advance"
+  "We remain commited to find Dr. Sinclair and that is our number one priority right now"
+  wait 1000
+  jump end

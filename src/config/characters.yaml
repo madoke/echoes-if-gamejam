@@ -1,0 +1,39 @@
+---
+config:
+  imagesPath: "./img/characters/"
+  playerCharacter: player
+  gameCharacter: game
+characters:
+  game:
+    name: ""
+    color: orange
+  player:
+    style:
+      color: green
+    sprites:
+      idle: player.png
+    name: Jones
+  diaz:
+    sprites:
+      idle: diaz.png
+    style:
+      color: white
+    name: Diaz
+  thompson:
+    sprites:
+      idle: thompson.png
+    style:
+      color: red
+    name: Thomson
+  patrick:
+    sprites:
+      idle: patrick.png
+    style:
+      color: green
+    name: Patrick
+  sinclair:
+    sprites:
+      idle: sinclair.png
+    style:
+      color: blue
+    name: Veronica

@@ -1,0 +1,34 @@
+---
+gameTitle: Echoes of Deception
+saveFileName: echoes
+dialogPanel:
+  overlayMode: true
+  rightOffset: 100
+  bottomOffset: 50
+  width: 475
+  height: 680
+  textSpeed: 20
+  animateText: true
+  timeBetweenLines: 100
+layout:
+  backgrounds:
+    width: 1280
+    height: 720
+  dialogBottomPadding: 70
+  mobileDialogHeightPercentage: 60
+  verticalLayoutThreshold: 600
+  portraits:
+    width: 75
+    height: 75
+notifications:
+  timeOnScreen: 1.5
+  alsoPrintInDialogue: true
+hudStats:
+  money:
+    icon: img/ui/money.webp
+    name: Money
+    startingValue: 10
+    minValue: 0
+saves:
+  mode: manual
+  slots: 10
