@@ -3,10 +3,9 @@ revelations:
 
 prototype_wing:
   set_screen prototype_wing
-  talk player idle "Dr Sinclair! I'm getting you out."
-  talk patrick idle "Not so fast."
-  talk player idle "Mr. Schwartz?"
-  talk patrick idle "Horizon offered me a way out."
+  talk patrick idle "You should have stayed back there."
+  talk player idle "Schwartz?"
+  talk patrick idle "Horizon bought me out."
   wait 1000
   if (== $data.reported_to_captain_diaz true):
     jump end_police_arrests_patrick
@@ -17,36 +16,36 @@ prototype_wing:
   jump end_detective_disapears
 
 end_detective_disapears:
-  talk player idle "Drop the gun or I'll shoot!"
-  "The sound of a gunshot, followed by an empty silence only broken by the sound of the detective's body dropping to the floor."
-  talk patrick idle "I wish you didn't make me do this..."
+  talk player idle "Drop the gun!"
+  "Gunshot"
+  talk patrick idle "It didn't have to end like this..."
   wait 1000
   jump end_detective_disapears_news
 
 end_detective_disapears_news:
   set_screen horizon_corp
-  "Casey Jones reported missing. The police assembled an emergency taskforce to find the detective's whereabouts."
+  "Detective Jones missing. Police working against the clock."
   wait 1000
   jump end
 
 end_talk_patrick_out:
-  talk player idle "They'll never let you go. Let's expose them!"
-  talk sinclair idle "They're running a secret weapons program. All documents are in my encrypted drive."
-  talk player idle "The world needs to know."
+  talk player idle "They'll never let you go!"
+  talk sinclair idle "They're running a weapons program. Evidence in my drive."
+  talk player idle "The world needs to know..."
   "Patrick drops the gun."
   wait 1000
   jump end_talk_patrick_out_news
 
 end_talk_patrick_out_news:
   set_screen arcadia_times
-  "Leaked documents reveal the company's involvement in weapons manufacturing, Top execs arrested."
+  "Leaked documents about Horizon's involvement in weapons manufacturing. Board members arrested."
   wait 1000
   jump end
 
 end_police_arrests_patrick:
   set_screen prototype_wing
   talk diaz idle "Don't move!"
-  "Patrick raises both hands in the air."
+  "Patrick raises both hands."
   talk player idle "Horizon bribed him, we can get a confession!"
   talk diaz idle "I'll take it from here."
   wait 1000
@@ -54,23 +53,22 @@ end_police_arrests_patrick:
 
 end_police_arrests_patrick_press:
   set_screen horizon_corp
-  "Dr. Sinclair found alive, reunited with her family, put her research in standby to recover from the trauma. Patrick Schwartz, was charged with kidnapping and industrial espionage"
+  "Dr. Sinclair reunited with her family. Patrick Schwartz arrested for kidnapping and industrial espionage"
   wait 1000
   jump end
 
 end_thomson_charged_murder:
   talk thomson idle "Schwartz! you son of a..."
-  "Thomson pulls out his gun, but Patrick shoots first."
-  "Two men still standing, looking at each other, when Detective Jones' body hits the floor."
-  talk thomson idle "You're gonna pay for this!"
-  "Sounds of footsteps approaching"
-  talk patrick idle "This is between you and the police now."
+  "Gunshot"
+  talk thomson idle "Jones! He's gonna pay!"
+  "Footsteps"
+  talk patrick idle "This is between you and the police."
   wait 1000
   jump end_thomson_charged_murder_press
 
 end_thomson_charged_murder_press:
   set_screen horizon_corp
-  "Former detective Jack Thomson arrested last Tuesday, for the murders of Veronica Sinclair and Casey Jones. Police reports Thomson is suffering from a mental condition could be considered unimputable."
+  "Detective Thomson arrested for murdering Veronica Sinclair and Casey Jones."
   wait 1000
   jump end  
 

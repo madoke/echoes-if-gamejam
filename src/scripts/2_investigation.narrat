@@ -2,10 +2,9 @@ investigation:
   change_scene "chapter-title" next_label "sinclair_lab" title "Part 2" subtitle "Investigation"
 
 sinclair_lab:
-  talk patrick idle "Good evening detective! I'm Horizon's head of security, assigned to assist in your investigation."  
-  talk player idle "Thanks, can I search Dr. Sinclair's laboratory?"
-  talk patrick idle "As you can see, everything is as she left it."
-  think player idle "This looks excessively tidy, looks like someone's trying to cover their tracks..."
+  talk patrick idle "Hi! Patrick Schartz, head of security, at your service."  
+  talk player idle "Thanks, I'll start right away."
+  think player idle "This looks excessively tidy, someone's trying to cover tracks..."
   wait 1000
   jump sinclair_lab_choices
 
@@ -14,72 +13,57 @@ sinclair_lab_choices:
     "What next?"
     "Read journal" if (== $data.read_sinclair_journal false):
       set data.read_sinclair_journal true
-      "March 21st 2030"
-      "Jack seems more delusional every day since we broke up. Yesterday he followed me home, and I'm worried that he might do something crazy."
-      think player idle "Humm.. That's not what I read in the official report."
+      "...Jack is acting weird. He followed me home, and I fear he may hurt me."
+      think player idle "That wasn't in the report..."
       wait 1000
       jump sinclair_lab_choices
     "Check computer" if (== $data.check_sinclair_computer false):
       set data.check_sinclair_computer true
-      "Inbox"
-      "From: HorizonPrototypes <proto@horizon.com>"
-      "The latest thermodynamic chip test results are in. Unfortunately there were no signs of computation."
-      "Full report available at the prototype wing."
-      think player idle "It looks like several emails were deleted. I wonder if they keep a copy in the data center?"
+      "The latest chips results are in. No signs of computation capabilities."
+      think player idle "It looks like some emails were deleted. They must keep backups..."
       wait 1000
       jump sinclair_lab_choices
-    "Sneak into the data center" if (== $data.check_sinclair_computer true):
-      talk player idle "Excuse me Mr. Schwartz, where are the restrooms?"
-      talk patrick idle "Down the corridor, first door on the right!"
-      talk player idle "I'll be right back."
+    "Search data center" if (== $data.check_sinclair_computer true):
+      talk player idle "Mr. Schwartz, the restrooms?"
+      talk patrick idle "First door on the right!"
+      talk player idle "Thanks."
       wait 1000
       jump data_center
-    "Go to prototype wing" if (== $data.check_sinclair_computer true):
-      talk player idle "Shall we take a look at the prototype wing?"
-      talk patrick idle "Of course! After you."
+    "Investigate prototype wing" if (== $data.check_sinclair_computer true):
       jump revelations
 
 data_center:
   set data.discover_horizon_plans true
-  think player idle "Alright Jones, think... Where can I find email backups?"
-  "Types ls /data/backups/email"
-  think player idle "That was easy."
-  "Inbox"
-  "From: HorizonPrototypes <proto@horizon.com>"
-  "The latest thermodynamic chip test results are in. The new chips are AGI capable."
-  "Full report available at the prototype wing."
-  "---"
-  "From: HorizonMilitary <military@horizon.com>"
-  "We regret to inform that we're off this year's research budget. All Thermodynamics computing investigation will be halted until further notice."
-  "Your laboratory access was revoked. A member of Horizon Military will contact you for the context handover"
-  think player idle "Military? They're building weapons with her research! I need to stop them."
+  think player idle "Let'check the server backups..."
+  "The latest test results are in. The new chips are AGI capable."
+  "We'd like to discuss applicability to the military program."
+  think player idle "They're building weapons with AI!"
   wait 1000
   jump data_center_choices
 
 data_center_choices:
   choice:
     "What next ?"
-    "Call reinforcements and lock down Horizon Military":
-      "Picks up phone to call police station"
-      talk player idle "Illegal activities spotted at Horizon Military. We're locking down the facility."
-      talk player idle "All units to Horizon Military. This is not a drill. Repeat, this is not a drill."
+    "Lock down":
+      "Calls police station..."
+      talk player idle "Illegal activities spotted at Horizon. Lock down the facility."
+      talk player idle "All units to Horizon!"
       jump end_horizon_shut_down
     "Call Diaz" if (== $data.reported_to_captain_diaz false):
       set data.reported_to_captain_diaz true
-      talk player idle "Captain, this is more serious than we thought, Horizon is making weapons with Sinclair's research."
-      talk diaz idle "Your job is to find Dr. Sinclair, stop chasing those theories! Have you been talking to Jack?"
+      talk player idle "This is more serious than we thought, Horizon is building intelligen weapons."
+      talk diaz idle "Find Veronica and stop chasing ghosts!"
       jump data_center_choices
-    "Go to the prototype wing":
+    "Investigate prototype wing":
       jump revelations
 
 end_horizon_shut_down:
   set_screen diaz_office
-  talk diaz idle "What were you thinking?! I told you specifically to stop!"
-  talk player idle "Sir, the evidence is compelling. We can't ignore this."
-  talk diaz idle "You have it all figured out don't you? At least Jack understood it. They're too powerful detective, can't you see that I'm trying to protect you here? I can't risk the entire department because of a hunch. You're off the case."
+  talk diaz idle "What were you thinking?!"
+  talk player idle "The evidence is compelling. We can't ignore this."
+  talk diaz idle "Can't you see that I'm trying to protect us? I can't risk this department. You're off."
   wait 1000
-  "Press Release"
-  "Horizon denies all false alegations that a secret weapons program was running behind the scenes of the top of Dr. Sinclair's work. This is a research company focused in making science"
-  "We remain committed to support the police in finding and getting Dr. Sinclair to safety."
+  "Horizon denies allegations regarding a weapons program."
+  "Supporting the police in finding Dr. Sinclair remains our priority."
   wait 1000
   jump end

@@ -13,18 +13,18 @@ main:
 
 setup:
   set_screen diaz_office 0
-  talk diaz idle "Detective, have a seat."
+  talk diaz idle "Have a seat."
   talk diaz idle "I'm assigning you to the Sinclair case."
   talk player idle "What about Thompson?"
-  talk diaz idle "I pulled him out, he was secretly dating the victim."
-  talk diaz idle "He's not mentally well. You should avoid him. Understood?"
-  talk player idle "Got it."
+  talk diaz idle "I suspended him for dating the victim."
+  talk diaz idle "He's not well. You should avoid contact."
+  talk player idle "Affirmative."
   wait 1000
   jump case_choices
 
 case_choices:
   choice:
-    "What's' next ?"
+    "What's next?"
     "Review Case" if (== $data.visited_case_files false):
       jump case_files
     "Visit Thompson" if (== $data.visited_thompson false):
@@ -35,30 +35,28 @@ case_choices:
 case_files:
   set data.visited_case_files true
   set_screen case_files
-  "Police Report"
-  "March 22nd 2030 I went to Veronica Sinclair's apartment, after the parents reported her missing. No signs of break in, and none of Miss Sinclair's belongings missing. Later that evening, Captain Diaz took over the case."
-  "Thompson's Report"
-  "Things didn't add up in Veromica's lab. Her journal revealed she was close to a breakthrough in thermodynamics computing, but then all experiments were left unfinished. A suspicious email from upper management *** REDACTED *** aligned with company goals."
+  "Police: I went to Veronica Sinclair's apartment, after she was reported missing. No signs of break in, and none of her belongings missing. Later that day, Captain Diaz took over."
+  "Thompson: Things didn't add up in Veromica's lab. Journal reveals she was close to a breakthrough, but all experiments were unfinished. A suspicious email from horizon... [REDACTED]"
   wait 1000
   jump case_choices
 
 jack_thompson:
   set data.visited_jack_thompson true
   set_screen jack_thompson
-  talk thompson idle "This case is about everything but kidnapping. There are other forces at play here."
-  talk player idle "What about your involvement with Veronica?"
-  talk thompson idle "Bullshit! They don't want the truth. Her research is just.. too valuable for them."
+  talk thompson idle "This is not about kidnapping. There are other forces at play."
+  talk player idle "Were you seeing Veronica?"
+  talk thompson idle "That's Bullshit! They don't want the truth. Her research is just.. too valuable."
   talk player idle "Why isn't this in the report?"
-  talk thompson idle "Wake up kid! Diaz is compromised! You can't trust them! You're gonna need my help to figure it out."
+  talk thompson idle "Diaz is compromised! You can't trust them! You need my help to do this."
   wait 1000
   choice: 
     "Accept?"
     "Alright."
       set data.requested_thompson_help true
-      talk thompson idle "Good. I'll start with the prototype wing."
+      talk thompson idle "I'll start with the prototype wing."
     "I'm good. Thanks."
       set data.requested_thompson_help false
-      talk thompson idle "Tread carefully. They're dangerous."
+      talk thompson idle "Be careful."
   wait 1000
   jump case_choices
 
