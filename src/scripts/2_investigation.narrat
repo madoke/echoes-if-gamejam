@@ -2,6 +2,7 @@ investigation:
   change_scene "chapter-title" next_label "sinclair_lab" title "Part 2" subtitle "Investigation"
 
 sinclair_lab:
+  set_screen sinclair_lab
   talk patrick idle "Hi! Patrick Schartz, head of security, at your service."  
   talk player idle "Thanks, I'll start right away."
   think player idle "This looks excessively tidy, someone's trying to cover tracks..."
@@ -33,6 +34,7 @@ sinclair_lab_choices:
       jump revelations
 
 data_center:
+  set_screen datacenter
   set data.discover_horizon_plans true
   think player idle "Let'check the server backups..."
   "The latest test results are in. The new chips are AGI capable."

@@ -13,5 +13,7 @@ screens:
     background: img/backgrounds/prototype_wing.png
   horizon_corp:
     background: img/backgrounds/horizon_corp.png
-  sinclair_apartment:
-    background: img/backgrounds/title-screen.png
+  sinclair_lab:
+    background: img/backgrounds/sinclair-lab.png
+  datacenter:
+    background: img/backgrounds/datacenter.png

@@ -1,5 +1,15 @@
 /*  See https://docs.narrat.dev/guides/theming-the-game-and-ui for info on how to customise your game with CSS. */
 
+@font-face {
+  font-family: "MajorMonoDisplay";
+  src: url("/fonts/MajorMonoDisplay-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "KanitRegular";
+  src: url("/fonts/Kanit-Regular.ttf") format("truetype");
+}
+
 #narrat {
   /* Customise CSS variables here. They will override the existing narrat ones. You can also add your own variables */
   --bg-color: #131720;
@@ -7,6 +17,8 @@
   --primary: hsl(255, 30%, 55%);
   --focus: hsl(210, 90%, 50%);
   --secondary: #42b983;
+  --button-background: rgba(1, 1, 1, 0.2);
+  --font-family: "KanitRegular";
   /* You can easily override a CSS style by making it more specific than the original one.
   Any css added here will applied to elements inside of #narrat and be likely more specific than their original version */
 }
@@ -26,4 +38,22 @@
 
 #game-menu {
   background-color: rgba(0, 0, 0, 0.5) !important;
+  font-family: "MajorMonoDisplay";
+}
+
+.nrt-button {
+  border-width: 1px !important;
+  font-family: "MajorMonoDisplay";
+}
+
+.chapter-title-scene {
+  font-family: "MajorMonoDisplay";
+}
+
+.dialog {
+  background: rgba(1, 1, 1, 0.9);
+}
+
+#menu-menu-button {
+  display: none;
 }

@@ -14,7 +14,7 @@ layout:
   backgrounds:
     width: 1280
     height: 720
-  dialogBottomPadding: 70
+  dialogBottomPadding: 20
   mobileDialogHeightPercentage: 60
   verticalLayoutThreshold: 600
   portraits:
@@ -24,10 +24,10 @@ notifications:
   timeOnScreen: 1.5
   alsoPrintInDialogue: true
 hudStats:
-  money:
-    icon: img/ui/money.webp
-    name: Money
-    startingValue: 10
+  none:
+    icon: none
+    name: None
+    startingValue: 0
     minValue: 0
 saves:
   mode: manual
