@@ -19,9 +19,9 @@ characters:
     style:
       color: white
     name: Diaz
-  thompson:
+  thomson:
     sprites:
-      idle: thompson.png
+      idle: thomson.png
     style:
       color: red
     name: Thomson

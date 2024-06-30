@@ -12,7 +12,7 @@
     "vue.js",
     "snowpack"
   ],
-  "author": "Liana Pigeot <32243840+liana-p@users.noreply.github.com>",
+  "author": "Madoke <madoke@gmail.com>",
   "license": "MIT",
   "scripts": {
     "start": "npm run dev",

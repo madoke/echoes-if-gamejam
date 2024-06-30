@@ -52,7 +52,7 @@ end_police_arrests_patrick:
   jump end_police_arrests_patrick_press
 
 end_police_arrests_patrick_press:
-  set_screen horizon_corp
+  set_screen patrick_arrested
   "Dr. Sinclair reunited with her family. Patrick Schwartz arrested for kidnapping and industrial espionage"
   wait 1000
   jump end
@@ -61,13 +61,13 @@ end_thomson_charged_murder:
   talk thomson idle "Schwartz! you son of a..."
   "Gunshot"
   talk thomson idle "Jones! He's gonna pay!"
-  "Footsteps"
+  "Footsteps approaching"
   talk patrick idle "This is between you and the police."
   wait 1000
   jump end_thomson_charged_murder_press
 
 end_thomson_charged_murder_press:
-  set_screen horizon_corp
+  set_screen thomson_arrested
   "Detective Thomson arrested for murdering Veronica Sinclair and Casey Jones."
   wait 1000
   jump end  

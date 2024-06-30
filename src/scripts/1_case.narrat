@@ -1,7 +1,7 @@
 main:
   set data.visited_case_files false
-  set data.visited_thompson false
-  set data.requested_thompson_help false
+  set data.visited_thomson false
+  set data.requested_thomson_help false
 
   set data.read_sinclair_journal false
   set data.check_sinclair_computer false
@@ -15,7 +15,7 @@ setup:
   set_screen diaz_office 0
   talk diaz idle "Have a seat."
   talk diaz idle "I'm assigning you to the Sinclair case."
-  talk player idle "Something wrong with Thompson?"
+  talk player idle "Something wrong with Thomson?"
   talk diaz idle "A relationship with the victim compromises his judgement."
   talk diaz idle "You should avoid contact."
   talk player idle "Understood."
@@ -27,8 +27,8 @@ case_choices:
     "Options:"
     "Review Case" if (== $data.visited_case_files false):
       jump case_files
-    "Visit Thompson" if (== $data.visited_thompson false):
-      jump jack_thompson
+    "Visit Thomson" if (== $data.visited_thomson false):
+      jump jack_thomson
     "Check Laboratory" if (== $data.visited_case_files true):
       jump investigation
 
@@ -36,26 +36,26 @@ case_files:
   set data.visited_case_files true
   set_screen case_files
   "Police: I went to Veronica Sinclair's apartment, after she was reported missing. No signs of break in, and none of her belongings missing. Later that day, Captain Diaz took over the case."
-  "Thompson: Things didn't add up in Veromica's lab. Journal reveals she was close to a breakthrough, but all experiments were unfinished. A suspicious email from horizon... [REDACTED]"
+  "Thomson: Things didn't add up in Veromica's lab. Journal reveals she was close to a breakthrough, but all experiments were unfinished. A suspicious email from horizon... [REDACTED]"
   wait 1000
   jump case_choices
 
-jack_thompson:
-  set data.visited_thompson true
-  set_screen jack_thompson
+jack_thomson:
+  set data.visited_thomson true
+  set_screen jack_thomson
   talk player idle "So... were you seeing Veronica?"
-  talk thompson idle "That's Bullshit! They don't want the truth. Her research is just.. too valuable."
+  talk thomson idle "That's Bullshit! They don't want the truth. Her research is just.. too valuable."
   talk player idle "Why isn't this in the report?"
-  talk thompson idle "Diaz is compromised! You can't trust them! We need to work together on this one."
+  talk thomson idle "Diaz is compromised! You can't trust them! We need to work together on this one."
   wait 1000
   choice: 
     "Accept?"
     "Alright."
-      set data.requested_thompson_help true
-      talk thompson idle "I'll meet you at the prototype wing."
+      set data.requested_thomson_help true
+      talk thomson idle "I'll meet you at the prototype wing."
     "I'm good. Thanks."
-      set data.requested_thompson_help false
-      talk thompson idle "Thread carefully. You're playing with fire."
+      set data.requested_thomson_help false
+      talk thomson idle "Thread carefully. You're playing with fire."
   wait 1000
   jump case_choices
 

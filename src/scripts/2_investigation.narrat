@@ -53,8 +53,8 @@ data_center_choices:
       jump end_horizon_shut_down
     "Call Diaz" if (== $data.reported_to_captain_diaz false):
       set data.reported_to_captain_diaz true
-      talk player idle "This is more serious than we thought, Horizon is building AI weapons."
-      talk diaz idle "Find Veronica and stop chasing ghosts!"
+      talk player idle "This is more serious, Horizon is building AI weapons."
+      talk diaz idle "Stop immediately! I'm sending reinforcements."
       jump data_center_choices
     "Investigate prototype wing":
       jump revelations
