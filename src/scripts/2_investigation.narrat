@@ -3,25 +3,26 @@ investigation:
 
 sinclair_lab:
   set_screen sinclair_lab
-  talk patrick idle "Hi! Patrick Schartz, head of security, at your service."  
+  talk patrick idle "Hi! Patrick Schartz, head of security, at your disposal."  
   talk player idle "Thanks, I'll start right away."
-  think player idle "This looks excessively tidy, someone's trying to cover tracks..."
+  think player idle "This looks excessively tidy, someone's trying to cover their tracks..."
   wait 1000
   jump sinclair_lab_choices
 
 sinclair_lab_choices:
   choice:
-    "What next?"
+    "Options:"
     "Read journal" if (== $data.read_sinclair_journal false):
       set data.read_sinclair_journal true
-      "...Jack is acting weird. He followed me home, and I fear he may hurt me."
+      "...Jack is acting weird lately. He followed me home, and I fear he may hurt me."
       think player idle "That wasn't in the report..."
       wait 1000
       jump sinclair_lab_choices
     "Check computer" if (== $data.check_sinclair_computer false):
       set data.check_sinclair_computer true
-      "The latest chips results are in. No signs of computation capabilities."
-      think player idle "It looks like some emails were deleted. They must keep backups..."
+      "Latest chips test results: No signs of computation capabilities."
+      "[EMAIL UNAVAILABLE]"
+      think player idle "It looks like emails were deleted. They must keep backups..."
       wait 1000
       jump sinclair_lab_choices
     "Search data center" if (== $data.check_sinclair_computer true):
@@ -45,15 +46,14 @@ data_center:
 
 data_center_choices:
   choice:
-    "What next ?"
-    "Lock down":
-      "Calls police station..."
-      talk player idle "Illegal activities spotted at Horizon. Lock down the facility."
-      talk player idle "All units to Horizon!"
+    "Options:"
+    "Lock down facility":
+      "Calls reinforcements..."
+      talk player idle "All units to Horizon! We're locking down the facility and halting weapon manufacturing activities!"
       jump end_horizon_shut_down
     "Call Diaz" if (== $data.reported_to_captain_diaz false):
       set data.reported_to_captain_diaz true
-      talk player idle "This is more serious than we thought, Horizon is building intelligen weapons."
+      talk player idle "This is more serious than we thought, Horizon is building AI weapons."
       talk diaz idle "Find Veronica and stop chasing ghosts!"
       jump data_center_choices
     "Investigate prototype wing":
@@ -65,6 +65,7 @@ end_horizon_shut_down:
   talk player idle "The evidence is compelling. We can't ignore this."
   talk diaz idle "Can't you see that I'm trying to protect us? I can't risk this department. You're off."
   wait 1000
+  set_screen theory_debunked
   "Horizon denies allegations regarding a weapons program."
   "Supporting the police in finding Dr. Sinclair remains our priority."
   wait 1000

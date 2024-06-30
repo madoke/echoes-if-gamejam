@@ -7,13 +7,15 @@ screens:
     background: img/backgrounds/evidence-room.jpeg
   jack_thompson:
     background: img/backgrounds/jack_thompson.png
-  arcadia_times:
-    background: img/backgrounds/arcadia-times.jpeg
+  horizon_exposed:
+    background: img/backgrounds/horizon-exposed.png
   prototype_wing:
     background: img/backgrounds/prototype_wing.png
-  horizon_corp:
-    background: img/backgrounds/horizon_corp.png
   sinclair_lab:
     background: img/backgrounds/sinclair-lab.png
   datacenter:
     background: img/backgrounds/datacenter.png
+  theory_debunked:
+    background: img/backgrounds/theory-debunked.png
+  detective_missing:
+    background: img/backgrounds/detective-missing.png

@@ -57,3 +57,7 @@
 #menu-menu-button {
   display: none;
 }
+
+.auto-skip-buttons .auto {
+  display: none;
+}

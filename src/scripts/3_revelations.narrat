@@ -5,7 +5,7 @@ prototype_wing:
   set_screen prototype_wing
   talk patrick idle "You should have stayed back there."
   talk player idle "Schwartz?"
-  talk patrick idle "Horizon bought me out."
+  talk patrick idle "Horizon offered me a way out."
   wait 1000
   if (== $data.reported_to_captain_diaz true):
     jump end_police_arrests_patrick
@@ -16,28 +16,28 @@ prototype_wing:
   jump end_detective_disapears
 
 end_detective_disapears:
-  talk player idle "Drop the gun!"
+  "Reaches for the gun..."
   "Gunshot"
   talk patrick idle "It didn't have to end like this..."
   wait 1000
   jump end_detective_disapears_news
 
 end_detective_disapears_news:
-  set_screen horizon_corp
-  "Detective Jones missing. Police working against the clock."
+  set_screen detective_missing
+  "Horizon and the police department are coordenating efforts to locate detective Jones."
   wait 1000
   jump end
 
 end_talk_patrick_out:
   talk player idle "They'll never let you go!"
-  talk sinclair idle "They're running a weapons program. Evidence in my drive."
+  talk sinclair idle "They're running a weapons program. Evidence is in my drive."
   talk player idle "The world needs to know..."
   "Patrick drops the gun."
   wait 1000
   jump end_talk_patrick_out_news
 
 end_talk_patrick_out_news:
-  set_screen arcadia_times
+  set_screen horizon_exposed
   "Leaked documents about Horizon's involvement in weapons manufacturing. Board members arrested."
   wait 1000
   jump end
